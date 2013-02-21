@@ -3,9 +3,12 @@
   <info>
     <name>get_fx_versions</name>
     <description/>
-    <extended_description/>
+    <extended_description>This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended_description>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>&#47;</directory>
     <parameters>
     </parameters>
