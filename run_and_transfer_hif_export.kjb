@@ -31,22 +31,22 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
         </parameter>
         <parameter>
             <name>V.C</name>
-            <default_value>16.0</default_value>
+            <default_value>Invalid Current Version</default_value>
             <description>Current Firefox version</description>
         </parameter>
         <parameter>
             <name>V.P1</name>
-            <default_value>15.0</default_value>
+            <default_value>Invalid Previous Version 1</default_value>
             <description>Previous Firefox version</description>
         </parameter>
         <parameter>
             <name>V.P2</name>
-            <default_value>14.0</default_value>
+            <default_value>Invalid Previous Version 2</default_value>
             <description>Next newest Firefox version</description>
         </parameter>
         <parameter>
             <name>V.P3</name>
-            <default_value>13.0</default_value>
+            <default_value>Invalid Previous Version 3</default_value>
             <description>Next next newest Firefox version</description>
         </parameter>
     </parameters>
