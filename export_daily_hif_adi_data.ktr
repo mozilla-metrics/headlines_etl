@@ -21,7 +21,7 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.
         <parameter>
             <name>OUTPUT_DIR</name>
             <default_value>&#47;etl&#47;output&#47;headline&#47;</default_value>
-            <description>null</description>
+            <description>Location to store output files</description>
         </parameter>
         <parameter>
             <name>V.C</name>

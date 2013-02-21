@@ -122,7 +122,7 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>60</xloc>
-      <yloc>120</yloc>
+      <yloc>213</yloc>
       </entry>
     <entry>
       <name>Transfer Export Files</name>
@@ -155,7 +155,7 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>60</xloc>
-      <yloc>200</yloc>
+      <yloc>293</yloc>
       </entry>
     <entry>
       <name>Send Error Mail</name>
@@ -195,7 +195,7 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>180</xloc>
-      <yloc>200</yloc>
+      <yloc>293</yloc>
       </entry>
     <entry>
       <name>Success</name>
@@ -205,7 +205,7 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>60</xloc>
-      <yloc>280</yloc>
+      <yloc>373</yloc>
       </entry>
     <entry>
       <name>Abort job</name>
@@ -216,19 +216,42 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>280</xloc>
-      <yloc>200</yloc>
+      <yloc>293</yloc>
+      </entry>
+    <entry>
+      <name>Set version variables</name>
+      <description/>
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Job.Filename.Directory}&#47;get_fx_versions.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>60</xloc>
+      <yloc>120</yloc>
       </entry>
   </entries>
   <hops>
-    <hop>
-      <from>START</from>
-      <to>Run HIF Export</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
     <hop>
       <from>Run HIF Export</from>
       <to>Transfer Export Files</to>
@@ -273,6 +296,24 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <enabled>Y</enabled>
       <evaluation>N</evaluation>
       <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>START</from>
+      <to>Set version variables</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Set version variables</from>
+      <to>Run HIF Export</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
     </hop>
   </hops>
   <notepads>
