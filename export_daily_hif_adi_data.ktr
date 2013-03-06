@@ -115,6 +115,7 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
+      <attribute><code>EXTRA_OPTION_VERTICA.ResultBufferSize</code><attribute>8192000</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
@@ -1297,7 +1298,7 @@ putRow(newRow);
            </partitioning>
     <connection>metrics</connection>
     <sql>SELECT
-  TO_CHAR(TO_DATE(2451544 + utc_date_id, &apos;J&apos;), &apos;yyyy-MM-dd&apos;) AS &quot;date&quot;
+  TO_CHAR(TO_DATE(TO_CHAR(2451544 + utc_date_id), &apos;J&apos;), &apos;yyyy-MM-dd&apos;) AS &quot;date&quot;
 , product_name
 , continent_code
 , country_code
@@ -1340,7 +1341,7 @@ ORDER BY 1, 2, 3, 4
            </partitioning>
     <connection>metrics</connection>
     <sql>SELECT
-  TO_CHAR(TO_DATE(2451544 + utc_date_id, &apos;J&apos;), &apos;yyyy-MM-dd&apos;) AS &quot;date&quot;
+  TO_CHAR(TO_DATE(TO_CHAR(2451544 + utc_date_id), &apos;J&apos;), &apos;yyyy-MM-dd&apos;) AS &quot;date&quot;
 , continent_code
 , country_code
 , SUM(requests) AS &apos;count&apos;
@@ -1381,7 +1382,7 @@ ORDER BY 1, 2, 3
            </partitioning>
     <connection>metrics</connection>
     <sql>SELECT
-  TO_CHAR(TO_DATE(2451544 + b.date_id, &apos;J&apos;), &apos;yyyy-MM-dd&apos;) AS &quot;date&quot;
+  TO_CHAR(TO_DATE(TO_CHAR(2451544 + b.date_id), &apos;J&apos;), &apos;yyyy-MM-dd&apos;) AS &quot;date&quot;
 , marketing_region_code AS &apos;continent_code&apos;
 , country_code
 , SUM(daily_device_installs) AS &apos;count&apos;
