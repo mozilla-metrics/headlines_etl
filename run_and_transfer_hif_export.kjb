@@ -89,8 +89,8 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>60</xloc>
-      <yloc>40</yloc>
+      <xloc>80</xloc>
+      <yloc>20</yloc>
       </entry>
     <entry>
       <name>Run HIF Export</name>
@@ -136,8 +136,8 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
             </parameter>      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>60</xloc>
-      <yloc>280</yloc>
+      <xloc>80</xloc>
+      <yloc>260</yloc>
       </entry>
     <entry>
       <name>Transfer Export Files</name>
@@ -169,8 +169,8 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>60</xloc>
-      <yloc>360</yloc>
+      <xloc>80</xloc>
+      <yloc>340</yloc>
       </entry>
     <entry>
       <name>Send Error Mail</name>
@@ -209,7 +209,7 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>180</xloc>
+      <xloc>240</xloc>
       <yloc>360</yloc>
       </entry>
     <entry>
@@ -219,8 +219,8 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>60</xloc>
-      <yloc>440</yloc>
+      <xloc>80</xloc>
+      <yloc>580</yloc>
       </entry>
     <entry>
       <name>Abort job</name>
@@ -230,7 +230,7 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>280</xloc>
+      <xloc>320</xloc>
       <yloc>360</yloc>
       </entry>
     <entry>
@@ -262,8 +262,8 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>60</xloc>
-      <yloc>120</yloc>
+      <xloc>80</xloc>
+      <yloc>100</yloc>
       </entry>
     <entry>
       <name>Write To Log</name>
@@ -278,8 +278,66 @@ Previous 3 = ${V.P3}</logmessage>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>60</xloc>
-      <yloc>200</yloc>
+      <xloc>80</xloc>
+      <yloc>180</yloc>
+      </entry>
+    <entry>
+      <name>Publish ADI Data</name>
+      <description/>
+      <type>SFTPPUT</type>
+      <servername>${HIF_PUB_REMOTE_HOST}</servername>
+      <serverport>22</serverport>
+      <username>${HIF_USER}</username>
+      <password>Encrypted </password>
+      <sftpdirectory>${PUB_OUTPUT_DIR}&#47;</sftpdirectory>
+      <localdirectory>${OUTPUT_DIR}</localdirectory>
+      <wildcard>adi\.json</wildcard>
+      <copyprevious>N</copyprevious>
+      <addFilenameResut>Y</addFilenameResut>
+      <usekeyfilename>Y</usekeyfilename>
+      <keyfilename>${HIF_USER_PRIVKEY_FILE}</keyfilename>
+      <keyfilepass>Encrypted </keyfilepass>
+      <compression>none</compression>
+      <proxyType/>
+      <proxyHost/>
+      <proxyPort/>
+      <proxyUsername/>
+      <proxyPassword>Encrypted </proxyPassword>
+      <createRemoteFolder>Y</createRemoteFolder>
+      <aftersftpput>nothing</aftersftpput>
+      <destinationfolder/>
+      <createdestinationfolder>N</createdestinationfolder>
+      <successWhenNoFile>N</successWhenNoFile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>80</xloc>
+      <yloc>500</yloc>
+      </entry>
+    <entry>
+      <name>Copy ADI File</name>
+      <description/>
+      <type>COPY_FILES</type>
+      <copy_empty_folders>Y</copy_empty_folders>
+      <arg_from_previous>N</arg_from_previous>
+      <overwrite_files>Y</overwrite_files>
+      <include_subfolders>N</include_subfolders>
+      <remove_source_files>N</remove_source_files>
+      <add_result_filesname>N</add_result_filesname>
+      <destination_is_a_file>Y</destination_is_a_file>
+      <create_destination_folder>N</create_destination_folder>
+      <fields>
+        <field>
+          <source_filefolder>${OUTPUT_DIR}&#47;${HIF_DAY_OF_WEEK}&#47;chart_desktop_adi.json</source_filefolder>
+          <destination_filefolder>${OUTPUT_DIR}&#47;adi.json</destination_filefolder>
+          <wildcard/>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>80</xloc>
+      <yloc>420</yloc>
       </entry>
   </entries>
   <hops>
@@ -299,15 +357,6 @@ Previous 3 = ${V.P3}</logmessage>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Transfer Export Files</from>
-      <to>Success</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
     <hop>
@@ -354,6 +403,51 @@ Previous 3 = ${V.P3}</logmessage>
       <enabled>Y</enabled>
       <evaluation>N</evaluation>
       <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Publish ADI Data</from>
+      <to>Send Error Mail</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Copy ADI File</from>
+      <to>Send Error Mail</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Publish ADI Data</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Transfer Export Files</from>
+      <to>Copy ADI File</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Copy ADI File</from>
+      <to>Publish ADI Data</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
     </hop>
   </hops>
   <notepads>
