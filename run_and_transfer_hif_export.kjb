@@ -94,8 +94,8 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>80</xloc>
-      <yloc>20</yloc>
+      <xloc>264</xloc>
+      <yloc>68</yloc>
       </entry>
     <entry>
       <name>Run HIF Export</name>
@@ -141,8 +141,8 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
             </parameter>      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>80</xloc>
-      <yloc>260</yloc>
+      <xloc>264</xloc>
+      <yloc>308</yloc>
       </entry>
     <entry>
       <name>Transfer Export Files</name>
@@ -174,8 +174,8 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>80</xloc>
-      <yloc>340</yloc>
+      <xloc>264</xloc>
+      <yloc>388</yloc>
       </entry>
     <entry>
       <name>Send Error Mail</name>
@@ -214,8 +214,8 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>240</xloc>
-      <yloc>360</yloc>
+      <xloc>119</xloc>
+      <yloc>414</yloc>
       </entry>
     <entry>
       <name>Success</name>
@@ -224,8 +224,8 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>80</xloc>
-      <yloc>580</yloc>
+      <xloc>264</xloc>
+      <yloc>628</yloc>
       </entry>
     <entry>
       <name>Abort job</name>
@@ -235,8 +235,8 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>320</xloc>
-      <yloc>360</yloc>
+      <xloc>32</xloc>
+      <yloc>414</yloc>
       </entry>
     <entry>
       <name>Set version variables</name>
@@ -267,8 +267,8 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.</extended
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>80</xloc>
-      <yloc>100</yloc>
+      <xloc>264</xloc>
+      <yloc>148</yloc>
       </entry>
     <entry>
       <name>Write To Log</name>
@@ -283,8 +283,8 @@ Previous 3 = ${V.P3}</logmessage>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>80</xloc>
-      <yloc>180</yloc>
+      <xloc>264</xloc>
+      <yloc>228</yloc>
       </entry>
     <entry>
       <name>Publish ADI Data</name>
@@ -296,7 +296,7 @@ Previous 3 = ${V.P3}</logmessage>
       <password>Encrypted </password>
       <sftpdirectory>${PUB_OUTPUT_DIR}&#47;</sftpdirectory>
       <localdirectory>${OUTPUT_DIR}</localdirectory>
-      <wildcard>adi\.json</wildcard>
+      <wildcard>.*_adi\.json</wildcard>
       <copyprevious>N</copyprevious>
       <addFilenameResut>Y</addFilenameResut>
       <usekeyfilename>Y</usekeyfilename>
@@ -316,11 +316,11 @@ Previous 3 = ${V.P3}</logmessage>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>80</xloc>
-      <yloc>500</yloc>
+      <xloc>264</xloc>
+      <yloc>548</yloc>
       </entry>
     <entry>
-      <name>Copy ADI File</name>
+      <name>Copy ADI Files</name>
       <description/>
       <type>COPY_FILES</type>
       <copy_empty_folders>Y</copy_empty_folders>
@@ -334,15 +334,20 @@ Previous 3 = ${V.P3}</logmessage>
       <fields>
         <field>
           <source_filefolder>${OUTPUT_DIR}&#47;${HIF_DAY_OF_WEEK}&#47;chart_desktop_adi.json</source_filefolder>
-          <destination_filefolder>${OUTPUT_DIR}&#47;adi.json</destination_filefolder>
+          <destination_filefolder>${OUTPUT_DIR}&#47;desktop_adi.json</destination_filefolder>
+          <wildcard/>
+        </field>
+        <field>
+          <source_filefolder>${OUTPUT_DIR}&#47;${HIF_DAY_OF_WEEK}&#47;chart_mobile_adi.json</source_filefolder>
+          <destination_filefolder>${OUTPUT_DIR}&#47;fennec_adi.json</destination_filefolder>
           <wildcard/>
         </field>
       </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>80</xloc>
-      <yloc>420</yloc>
+      <xloc>264</xloc>
+      <yloc>468</yloc>
       </entry>
   </entries>
   <hops>
@@ -419,7 +424,7 @@ Previous 3 = ${V.P3}</logmessage>
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Copy ADI File</from>
+      <from>Copy ADI Files</from>
       <to>Send Error Mail</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -438,7 +443,7 @@ Previous 3 = ${V.P3}</logmessage>
     </hop>
     <hop>
       <from>Transfer Export Files</from>
-      <to>Copy ADI File</to>
+      <to>Copy ADI Files</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -446,7 +451,7 @@ Previous 3 = ${V.P3}</logmessage>
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Copy ADI File</from>
+      <from>Copy ADI Files</from>
       <to>Publish ADI Data</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
