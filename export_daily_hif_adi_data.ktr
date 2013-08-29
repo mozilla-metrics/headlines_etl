@@ -1516,7 +1516,7 @@ var jsDevice = String(device);
 &#47;&#47; Whenever we encounter a new date in the ordered stream of incoming rows, we&apos;ll update the data structure to cover it.
 if (jsDate != json.ffos.dates[currDateArrayIndex]) {
 	currDateArrayIndex = json.ffos.dates.length;
-	json.ffos.dates.push(currDate);
+	json.ffos.dates.push(jsDate);
 }
 
 var ffos = json.ffos;
@@ -1524,7 +1524,7 @@ var region = json.ffos.regions[jsRegion] = (json.ffos.regions[jsRegion] || { &qu
 var country = region.countries[jsCountry] = (region.countries[jsCountry] || { &quot;adi&quot;: [], &quot;devices&quot;: {} });
 var device = country.devices[jsDevice] = (country.devices[jsDevice] || { &quot;adi&quot;: [] });
 
-ffos.adi[currDateArrayIndex] = (date_adi[currDateArrayIndex] || 0) + jsCount;
+ffos.adi[currDateArrayIndex] = (ffos.adi[currDateArrayIndex] || 0) + jsCount;
 region.adi[currDateArrayIndex] = (region.adi[currDateArrayIndex] || 0) + jsCount;
 country.adi[currDateArrayIndex] = (country.adi[currDateArrayIndex] || 0) + jsCount;
 device.adi[currDateArrayIndex] = (device.adi[currDateArrayIndex] || 0) + jsCount;
