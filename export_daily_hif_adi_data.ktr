@@ -1522,7 +1522,7 @@ if (jsDate != json.ffos.dates[currDateArrayIndex]) {
 var ffos = json.ffos;
 var region = json.ffos.regions[jsRegion] = (json.ffos.regions[jsRegion] || { &quot;adi&quot;: [], &quot;countries&quot;: {} });
 var country = region.countries[jsCountry] = (region.countries[jsCountry] || { &quot;adi&quot;: [], &quot;devices&quot;: {} });
-var device = country.devices[jsDevice] = (country.devices[jsDevice] || { &quot;adi&quot;: [] };
+var device = country.devices[jsDevice] = (country.devices[jsDevice] || { &quot;adi&quot;: [] });
 
 ffos.adi[currDateArrayIndex] = (date_adi[currDateArrayIndex] || 0) + jsCount;
 region.adi[currDateArrayIndex] = (region.adi[currDateArrayIndex] || 0) + jsCount;
