@@ -101,6 +101,27 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.
   <modified_date>2009&#47;02&#47;04 10:21:47.657</modified_date>
   </info>
   <notepads>
+    <notepad>
+      <note>Added blocking steps to prevent dead-lock in vertica jdbc driver.</note>
+      <xloc>0</xloc>
+      <yloc>0</yloc>
+      <width>305</width>
+      <heigth>21</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>metrics</name>
@@ -128,7 +149,7 @@ ISOLATION LEVEL READ COMMITTED</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Aggregate ADI by location to JSONs</from><to>Output chart_desktop_adi</to><enabled>Y</enabled> </hop>  <hop> <from>Aggregate Downloads by location to JSONs</from><to>Output chart_desktop_downloads</to><enabled>Y</enabled> </hop>  <hop> <from>Query for Firefox ADI by date and country</from><to>Map continent codes to regions</to><enabled>Y</enabled> </hop>  <hop> <from>Map continent codes to regions</from><to>Aggregate ADI by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Query for Firefox Downloads by date and country</from><to>Map continent codes to regions 2</to><enabled>Y</enabled> </hop>  <hop> <from>Map continent codes to regions 2</from><to>Aggregate Downloads by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_adi</from><to>Output chart_desktop_adi_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_uptake</from><to>Output chart_desktop_uptake_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_adi_plus_countries</from><to>Output chart_desktop_uptake</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_downloads</from><to>Output chart_desktop_downloads_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_adi</from><to>Output chart_mobile_adi_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Aggregate Mobile Downloads by location to JSONs</from><to>Output chart_mobile_downloads</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_downloads</from><to>Output chart_mobile_downloads_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Query for Mobile Downloads by date and country</from><to>Aggregate Mobile Downloads by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_uptake_plus_countries</from><to>Output chart_mobile_adi</to><enabled>Y</enabled> </hop>  <hop> <from>Query for FxOS ADI by date, country, device</from><to>Map continent codes to regions 3</to><enabled>Y</enabled> </hop>  <hop> <from>Map continent codes to regions 3</from><to>Aggregate FFOS ADI by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_ffos_adi</from><to>Output chart_ffos_adi_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_ffos_adi_plus_countries</from><to>Output chart_ffos_devices</to><enabled>Y</enabled> </hop>  <hop> <from>Aggregate FFOS ADI by location to JSONs</from><to>Output chart_ffos_adi</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Aggregate ADI by location to JSONs</from><to>Output chart_desktop_adi</to><enabled>Y</enabled> </hop>  <hop> <from>Aggregate Downloads by location to JSONs</from><to>Output chart_desktop_downloads</to><enabled>Y</enabled> </hop>  <hop> <from>Query for Firefox ADI by date and country</from><to>Map continent codes to regions</to><enabled>Y</enabled> </hop>  <hop> <from>Map continent codes to regions</from><to>Aggregate ADI by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Query for Firefox Downloads by date and country</from><to>Map continent codes to regions 2</to><enabled>Y</enabled> </hop>  <hop> <from>Map continent codes to regions 2</from><to>Aggregate Downloads by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_adi</from><to>Output chart_desktop_adi_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_uptake</from><to>Output chart_desktop_uptake_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_adi_plus_countries</from><to>Output chart_desktop_uptake</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_downloads</from><to>Output chart_desktop_downloads_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_adi</from><to>Output chart_mobile_adi_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Aggregate Mobile Downloads by location to JSONs</from><to>Output chart_mobile_downloads</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_downloads</from><to>Output chart_mobile_downloads_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Query for Mobile Downloads by date and country</from><to>Aggregate Mobile Downloads by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_uptake_plus_countries</from><to>Output chart_mobile_adi</to><enabled>Y</enabled> </hop>  <hop> <from>Query for FxOS ADI by date, country, device</from><to>Map continent codes to regions 3</to><enabled>Y</enabled> </hop>  <hop> <from>Map continent codes to regions 3</from><to>Aggregate FFOS ADI by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_ffos_adi</from><to>Output chart_ffos_adi_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_ffos_adi_plus_countries</from><to>Output chart_ffos_devices</to><enabled>Y</enabled> </hop>  <hop> <from>Aggregate FFOS ADI by location to JSONs</from><to>Output chart_ffos_adi</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_adi_plus_countries</from><to>block1</to><enabled>Y</enabled> </hop>  <hop> <from>block1</from><to>Query for Firefox Downloads by date and country</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_downloads_plus_countries</from><to>block2</to><enabled>Y</enabled> </hop>  <hop> <from>block2</from><to>Query for Mobile Downloads by date and country</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_downloads_plus_countries</from><to>block3</to><enabled>Y</enabled> </hop>  <hop> <from>block3</from><to>Query for FxOS ADI by date, country, device</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Aggregate ADI by location to JSONs</name>
     <type>ScriptValueMod</type>
@@ -451,6 +472,155 @@ putRow(newRow);
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>400</xloc>
+      <yloc>150</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Aggregate FFOS ADI by location to JSONs</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>main</jsScript_name>
+        <jsScript_script>var jsDate = String(date);
+
+if (currDate != jsDate) {
+	currDate = jsDate;
+	initNewDate(currDate);
+}
+
+accumulateDateData(versionsMap.ffos.currDate, region, country, device, Number(count));
+trans_Status = SKIP_TRANSFORMATION;</jsScript_script>
+      </jsScript>      <jsScript>        <jsScript_type>1</jsScript_type>
+        <jsScript_name>init</jsScript_name>
+        <jsScript_script>var currDate = null;
+
+var versionsMap = {
+	&quot;ffos&quot;: {
+		&quot;envelope&quot;: {&quot;version&quot;:&quot;all&quot;,&quot;json_data&quot;:[]}
+	}
+};
+
+
+function initNewDate(date) {
+	for each (var v in versionsMap) {
+		v.currDate = {&quot;date&quot;:date, &quot;count&quot;:0, &quot;regions&quot;:[{}], &quot;countries&quot;:[{}], &quot;devices&quot;:[{}]};
+		v.envelope.json_data.push(v.currDate);
+	}
+}
+
+function accumulateDateData(dateObj, region, country, device, count) {
+	dateObj.count += count;
+	dateObj.regions[0][region] = (dateObj.regions[0][region] || 0) + count;
+	dateObj.countries[0][country] = (dateObj.countries[0][country] || 0) + count;
+	dateObj.devices[0][device] = (dateObj.devices[0][device] || 0) + count;
+}
+
+function filterDevices(key, value) {
+	if (key == &quot;devices&quot;) {
+		return undefined;
+	}
+	return value;
+}
+
+function filterCountriesAndDevices(key, value) {
+	if (key == &quot;countries&quot; || key == &quot;devices&quot;) {
+		return undefined;
+	}
+	return value;
+}
+
+function filterRegionsAndCountries(key, value) {
+	if (key == &quot;regions&quot; || key == &quot;countries&quot;) {
+		return undefined;
+	}
+	return value;
+}
+
+function envelopeToRegionsJSON(envelope) {
+	return JSON.stringify(envelope, filterCountriesAndDevices);
+}
+
+function envelopeToRegionsAndCountriesJSON(envelope) {
+	return JSON.stringify(envelope, filterDevices);
+}
+
+function envelopeToDevicesJSON(envelope) {
+	return JSON.stringify(envelope, filterRegionsAndCountries);
+}
+</jsScript_script>
+      </jsScript>      <jsScript>        <jsScript_type>2</jsScript_type>
+        <jsScript_name>end</jsScript_name>
+        <jsScript_script>var theDay = &quot;&quot; + (new Date()).getUTCDay();
+var theDir = getVariable(&quot;OUTPUT_DIR&quot;, &quot;XXX&quot;) + theDay;
+
+&#47;&#47; Set this as a system-wide var
+setVariable(&quot;HIF_DAY_OF_WEEK&quot;, theDay, &quot;s&quot;);
+
+var ffos_adi_regions_filename = theDir + &quot;&#47;chart_ffos_adi.json&quot;;
+var ffos_adi_countries_filename = theDir + &quot;&#47;chart_ffos_adi_plus_countries.json&quot;;
+var ffos_adi_devices_filename = theDir + &quot;&#47;chart_ffos_adi_plus_devices.json&quot;;
+
+
+var newRow = createRowCopy(getOutputRowMeta().size());
+var rowIndex = getInputRowMeta().size();
+newRow[rowIndex++] = envelopeToRegionsJSON(versionsMap.ffos.envelope);
+newRow[rowIndex++] = envelopeToRegionsAndCountriesJSON(versionsMap.ffos.envelope);
+newRow[rowIndex++] = envelopeToDevicesJSON(versionsMap.ffos.envelope);
+newRow[rowIndex++] = ffos_adi_regions_filename;
+newRow[rowIndex++] = ffos_adi_countries_filename;
+newRow[rowIndex++] = ffos_adi_devices_filename;
+
+putRow(newRow);
+</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>ffos_adi_regions_json</name>
+        <rename>ffos_adi_regions_json</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>ffos_adi_countries_json</name>
+        <rename>ffos_adi_countries_json</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>ffos_adi_devices_json</name>
+        <rename>ffos_adi_devices_json</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>ffos_adi_regions_filename</name>
+        <rename>ffos_adi_regions_filename</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>ffos_adi_countries_filename</name>
+        <rename>ffos_adi_countries_filename</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>ffos_adi_devices_filename</name>
+        <rename>ffos_adi_devices_filename</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>950</xloc>
       <yloc>150</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1086,6 +1256,195 @@ putRow(newRow);
     </step>
 
   <step>
+    <name>Output chart_ffos_adi</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator/>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>UNIX</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>Y</fileNameInField>
+    <fileNameField>ffos_adi_regions_filename</fileNameField>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name/>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
+      <extention/>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>Y</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>ffos_adi_regions_json</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>950</xloc>
+      <yloc>200</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Output chart_ffos_adi_plus_countries</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator/>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>UNIX</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>Y</fileNameInField>
+    <fileNameField>ffos_adi_countries_filename</fileNameField>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name/>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
+      <extention/>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>Y</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>ffos_adi_countries_json</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>950</xloc>
+      <yloc>250</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Output chart_ffos_devices</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator/>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>UNIX</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>Y</fileNameInField>
+    <fileNameField>ffos_adi_devices_filename</fileNameField>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name/>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
+      <extention/>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>Y</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>ffos_adi_devices_json</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>950</xloc>
+      <yloc>300</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Output chart_mobile_adi</name>
     <type>TextFileOutput</type>
     <description/>
@@ -1410,7 +1769,7 @@ ORDER BY 1, 2, 3
 </sql>
     <limit>0</limit>
     <lookup/>
-    <execute_each_row>N</execute_each_row>
+    <execute_each_row>Y</execute_each_row>
     <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
@@ -1445,7 +1804,7 @@ ORDER BY 1, 2, 3, 4
 </sql>
     <limit>0</limit>
     <lookup/>
-    <execute_each_row>N</execute_each_row>
+    <execute_each_row>Y</execute_each_row>
     <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
@@ -1482,7 +1841,7 @@ ORDER BY 1, 2, 3
 </sql>
     <limit>0</limit>
     <lookup/>
-    <execute_each_row>N</execute_each_row>
+    <execute_each_row>Y</execute_each_row>
     <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
@@ -1494,8 +1853,8 @@ ORDER BY 1, 2, 3
     </step>
 
   <step>
-    <name>Aggregate FFOS ADI by location to JSONs</name>
-    <type>ScriptValueMod</type>
+    <name>block1</name>
+    <type>BlockingStep</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -1503,148 +1862,22 @@ ORDER BY 1, 2, 3
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>main</jsScript_name>
-        <jsScript_script>var jsDate = String(date);
-
-if (currDate != jsDate) {
-	currDate = jsDate;
-	initNewDate(currDate);
-}
-
-accumulateDateData(versionsMap.ffos.currDate, region, country, device, Number(count));
-trans_Status = SKIP_TRANSFORMATION;</jsScript_script>
-      </jsScript>      <jsScript>        <jsScript_type>1</jsScript_type>
-        <jsScript_name>init</jsScript_name>
-        <jsScript_script>var currDate = null;
-
-var versionsMap = {
-	&quot;ffos&quot;: {
-		&quot;envelope&quot;: {&quot;version&quot;:&quot;all&quot;,&quot;json_data&quot;:[]}
-	}
-};
-
-
-function initNewDate(date) {
-	for each (var v in versionsMap) {
-		v.currDate = {&quot;date&quot;:date, &quot;count&quot;:0, &quot;regions&quot;:[{}], &quot;countries&quot;:[{}], &quot;devices&quot;:[{}]};
-		v.envelope.json_data.push(v.currDate);
-	}
-}
-
-function accumulateDateData(dateObj, region, country, device, count) {
-	dateObj.count += count;
-	dateObj.regions[0][region] = (dateObj.regions[0][region] || 0) + count;
-	dateObj.countries[0][country] = (dateObj.countries[0][country] || 0) + count;
-	dateObj.devices[0][device] = (dateObj.devices[0][device] || 0) + count;
-}
-
-function filterDevices(key, value) {
-	if (key == &quot;devices&quot;) {
-		return undefined;
-	}
-	return value;
-}
-
-function filterCountriesAndDevices(key, value) {
-	if (key == &quot;countries&quot; || key == &quot;devices&quot;) {
-		return undefined;
-	}
-	return value;
-}
-
-function filterRegionsAndCountries(key, value) {
-	if (key == &quot;regions&quot; || key == &quot;countries&quot;) {
-		return undefined;
-	}
-	return value;
-}
-
-function envelopeToRegionsJSON(envelope) {
-	return JSON.stringify(envelope, filterCountriesAndDevices);
-}
-
-function envelopeToRegionsAndCountriesJSON(envelope) {
-	return JSON.stringify(envelope, filterDevices);
-}
-
-function envelopeToDevicesJSON(envelope) {
-	return JSON.stringify(envelope, filterRegionsAndCountries);
-}
-</jsScript_script>
-      </jsScript>      <jsScript>        <jsScript_type>2</jsScript_type>
-        <jsScript_name>end</jsScript_name>
-        <jsScript_script>var theDay = &quot;&quot; + (new Date()).getUTCDay();
-var theDir = getVariable(&quot;OUTPUT_DIR&quot;, &quot;XXX&quot;) + theDay;
-
-&#47;&#47; Set this as a system-wide var
-setVariable(&quot;HIF_DAY_OF_WEEK&quot;, theDay, &quot;s&quot;);
-
-var ffos_adi_regions_filename = theDir + &quot;&#47;chart_ffos_adi.json&quot;;
-var ffos_adi_countries_filename = theDir + &quot;&#47;chart_ffos_adi_plus_countries.json&quot;;
-var ffos_adi_devices_filename = theDir + &quot;&#47;chart_ffos_adi_plus_devices.json&quot;;
-
-
-var newRow = createRowCopy(getOutputRowMeta().size());
-var rowIndex = getInputRowMeta().size();
-newRow[rowIndex++] = envelopeToRegionsJSON(versionsMap.ffos.envelope);
-newRow[rowIndex++] = envelopeToRegionsAndCountriesJSON(versionsMap.ffos.envelope);
-newRow[rowIndex++] = envelopeToDevicesJSON(versionsMap.ffos.envelope);
-newRow[rowIndex++] = ffos_adi_regions_filename;
-newRow[rowIndex++] = ffos_adi_countries_filename;
-newRow[rowIndex++] = ffos_adi_devices_filename;
-
-putRow(newRow);
-</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>ffos_adi_regions_json</name>
-        <rename>ffos_adi_regions_json</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>ffos_adi_countries_json</name>
-        <rename>ffos_adi_countries_json</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>ffos_adi_devices_json</name>
-        <rename>ffos_adi_devices_json</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>ffos_adi_regions_filename</name>
-        <rename>ffos_adi_regions_filename</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>ffos_adi_countries_filename</name>
-        <rename>ffos_adi_countries_filename</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>ffos_adi_devices_filename</name>
-        <rename>ffos_adi_devices_filename</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
+      <pass_all_rows>N</pass_all_rows>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>block</prefix>
+      <cache_size>5000</cache_size>
+      <compress>Y</compress>
+     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>950</xloc>
-      <yloc>150</yloc>
+      <xloc>251</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Output chart_ffos_adi</name>
-    <type>TextFileOutput</type>
+    <name>block2</name>
+    <type>BlockingStep</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -1652,62 +1885,22 @@ putRow(newRow);
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <separator/>
-    <enclosure/>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>UNIX</format>
-    <compression>None</compression>
-    <encoding/>
-    <endedLine/>
-    <fileNameInField>Y</fileNameInField>
-    <fileNameField>ffos_adi_regions_filename</fileNameField>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name/>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
-      <extention/>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>Y</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>ffos_adi_regions_json</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
+      <pass_all_rows>N</pass_all_rows>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>block</prefix>
+      <cache_size>5000</cache_size>
+      <compress>Y</compress>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>950</xloc>
-      <yloc>200</yloc>
+      <xloc>547</xloc>
+      <yloc>155</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Output chart_ffos_adi_plus_countries</name>
-    <type>TextFileOutput</type>
+    <name>block3</name>
+    <type>BlockingStep</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -1715,118 +1908,15 @@ putRow(newRow);
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <separator/>
-    <enclosure/>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>UNIX</format>
-    <compression>None</compression>
-    <encoding/>
-    <endedLine/>
-    <fileNameInField>Y</fileNameInField>
-    <fileNameField>ffos_adi_countries_filename</fileNameField>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name/>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
-      <extention/>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>Y</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>ffos_adi_countries_json</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
+      <pass_all_rows>N</pass_all_rows>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>block</prefix>
+      <cache_size>5000</cache_size>
+      <compress>Y</compress>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>950</xloc>
-      <yloc>250</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Output chart_ffos_devices</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator/>
-    <enclosure/>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>UNIX</format>
-    <compression>None</compression>
-    <encoding/>
-    <endedLine/>
-    <fileNameInField>Y</fileNameInField>
-    <fileNameField>ffos_adi_devices_filename</fileNameField>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name/>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
-      <extention/>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>Y</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>ffos_adi_devices_json</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>950</xloc>
-      <yloc>300</yloc>
+      <xloc>829</xloc>
+      <yloc>137</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
