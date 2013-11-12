@@ -103,8 +103,8 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.
   <notepads>
     <notepad>
       <note>Added blocking steps to prevent dead-lock in vertica jdbc driver.</note>
-      <xloc>0</xloc>
-      <yloc>0</yloc>
+      <xloc>23</xloc>
+      <yloc>122</yloc>
       <width>305</width>
       <heigth>21</heigth>
       <fontname>Arial</fontname>
@@ -125,31 +125,30 @@ You can obtain one at http:&#47;&#47;mozilla.org&#47;MPL&#47;2.0&#47;.
   </notepads>
   <connection>
     <name>metrics</name>
-    <server>${VERTICA_HOST}</server>
-    <type>VERTICA</type>
+    <server>${METRICS_VERTICA_HOST}</server>
+    <type>GENERIC</type>
     <access>Native</access>
-    <database>${VERTICA_DB}</database>
-    <port>${VERTICA_PORT}</port>
-    <username>${VERTICA_USER}</username>
-    <password>${VERTICA_PASS}</password>
+    <database>${METRICS_VERTICA_DATABASE}</database>
+    <port>${METRICS_VERTICA_PORT}</port>
+    <username>${METRICS_VERTICA_USER}</username>
+    <password>${METRICS_VERTICA_PASS}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
-      <attribute><code>EXTRA_OPTION_VERTICA.ResultBufferSize</code><attribute>8192000</attribute></attribute>
+      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>com.vertica.jdbc.Driver</attribute></attribute>
+      <attribute><code>CUSTOM_URL</code><attribute>jdbc:vertica:&#47;&#47;${METRICS_VERTICA_HOST}:${METRICS_VERTICA_PORT}&#47;${METRICS_VERTICA_DATABASE}</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>${VERTICA_PORT}</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>${METRICS_VERTICA_PORT}</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>SQL_CONNECT</code><attribute>SET SESSION CHARACTERISTICS AS TRANSACTION 
-ISOLATION LEVEL READ COMMITTED</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Aggregate ADI by location to JSONs</from><to>Output chart_desktop_adi</to><enabled>Y</enabled> </hop>  <hop> <from>Aggregate Downloads by location to JSONs</from><to>Output chart_desktop_downloads</to><enabled>Y</enabled> </hop>  <hop> <from>Query for Firefox ADI by date and country</from><to>Map continent codes to regions</to><enabled>Y</enabled> </hop>  <hop> <from>Map continent codes to regions</from><to>Aggregate ADI by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Query for Firefox Downloads by date and country</from><to>Map continent codes to regions 2</to><enabled>Y</enabled> </hop>  <hop> <from>Map continent codes to regions 2</from><to>Aggregate Downloads by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_adi</from><to>Output chart_desktop_adi_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_uptake</from><to>Output chart_desktop_uptake_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_adi_plus_countries</from><to>Output chart_desktop_uptake</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_downloads</from><to>Output chart_desktop_downloads_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_adi</from><to>Output chart_mobile_adi_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Aggregate Mobile Downloads by location to JSONs</from><to>Output chart_mobile_downloads</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_downloads</from><to>Output chart_mobile_downloads_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Query for Mobile Downloads by date and country</from><to>Aggregate Mobile Downloads by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_uptake_plus_countries</from><to>Output chart_mobile_adi</to><enabled>Y</enabled> </hop>  <hop> <from>Query for FxOS ADI by date, country, device</from><to>Map continent codes to regions 3</to><enabled>Y</enabled> </hop>  <hop> <from>Map continent codes to regions 3</from><to>Aggregate FFOS ADI by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_ffos_adi</from><to>Output chart_ffos_adi_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_ffos_adi_plus_countries</from><to>Output chart_ffos_devices</to><enabled>Y</enabled> </hop>  <hop> <from>Aggregate FFOS ADI by location to JSONs</from><to>Output chart_ffos_adi</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_adi_plus_countries</from><to>block1</to><enabled>Y</enabled> </hop>  <hop> <from>block1</from><to>Query for Firefox Downloads by date and country</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_downloads_plus_countries</from><to>block2</to><enabled>Y</enabled> </hop>  <hop> <from>block2</from><to>Query for Mobile Downloads by date and country</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_downloads_plus_countries</from><to>block3</to><enabled>Y</enabled> </hop>  <hop> <from>block3</from><to>Query for FxOS ADI by date, country, device</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Aggregate ADI by location to JSONs</from><to>Output chart_desktop_adi</to><enabled>Y</enabled> </hop>  <hop> <from>Aggregate Downloads by location to JSONs</from><to>Output chart_desktop_downloads</to><enabled>Y</enabled> </hop>  <hop> <from>Query for Firefox ADI by date and country</from><to>Map continent codes to regions</to><enabled>Y</enabled> </hop>  <hop> <from>Map continent codes to regions</from><to>Aggregate ADI by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Query for Firefox Downloads by date and country</from><to>Map continent codes to regions 2</to><enabled>Y</enabled> </hop>  <hop> <from>Map continent codes to regions 2</from><to>Aggregate Downloads by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_adi</from><to>Output chart_desktop_adi_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_uptake</from><to>Output chart_desktop_uptake_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_adi_plus_countries</from><to>Output chart_desktop_uptake</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_downloads</from><to>Output chart_desktop_downloads_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_adi</from><to>Output chart_mobile_adi_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Aggregate Mobile Downloads by location to JSONs</from><to>Output chart_mobile_downloads</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_downloads</from><to>Output chart_mobile_downloads_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Query for Mobile Downloads by date and country</from><to>Aggregate Mobile Downloads by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_uptake_plus_countries</from><to>Output chart_mobile_adi</to><enabled>Y</enabled> </hop>  <hop> <from>Query for FxOS ADI by date, country, device</from><to>Map continent codes to regions 3</to><enabled>Y</enabled> </hop>  <hop> <from>Map continent codes to regions 3</from><to>Aggregate FFOS ADI by location to JSONs</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_ffos_adi</from><to>Output chart_ffos_adi_plus_countries</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_ffos_adi_plus_countries</from><to>Output chart_ffos_devices</to><enabled>Y</enabled> </hop>  <hop> <from>Aggregate FFOS ADI by location to JSONs</from><to>Output chart_ffos_adi</to><enabled>Y</enabled> </hop>  <hop> <from>Generate 1 Row</from><to>wait for: end 3</to><enabled>Y</enabled> </hop>  <hop> <from>Generate 1 Row</from><to>wait for: end 2</to><enabled>Y</enabled> </hop>  <hop> <from>Generate 1 Row</from><to>wait for: end 1</to><enabled>Y</enabled> </hop>  <hop> <from>wait for: end 1</from><to>Query for Firefox Downloads by date and country</to><enabled>Y</enabled> </hop>  <hop> <from>wait for: end 2</from><to>Query for Mobile Downloads by date and country</to><enabled>Y</enabled> </hop>  <hop> <from>wait for: end 3</from><to>Query for FxOS ADI by date, country, device</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_adi_plus_countries</from><to>end 1</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_desktop_downloads_plus_countries</from><to>end 2</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_mobile_downloads_plus_countries</from><to>end 3</to><enabled>Y</enabled> </hop>  <hop> <from>Output chart_ffos_devices</from><to>end 4</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Aggregate ADI by location to JSONs</name>
     <type>ScriptValueMod</type>
@@ -373,8 +372,8 @@ putRow(newRow);
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>100</xloc>
-      <yloc>150</yloc>
+      <xloc>107</xloc>
+      <yloc>312</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -471,8 +470,8 @@ putRow(newRow);
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>400</xloc>
-      <yloc>150</yloc>
+      <xloc>407</xloc>
+      <yloc>312</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -620,8 +619,8 @@ putRow(newRow);
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>950</xloc>
-      <yloc>150</yloc>
+      <xloc>957</xloc>
+      <yloc>312</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -718,8 +717,8 @@ putRow(newRow);
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>700</xloc>
-      <yloc>150</yloc>
+      <xloc>707</xloc>
+      <yloc>312</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -769,8 +768,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>100</xloc>
-      <yloc>100</yloc>
+      <xloc>107</xloc>
+      <yloc>262</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -820,8 +819,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>400</xloc>
-      <yloc>100</yloc>
+      <xloc>407</xloc>
+      <yloc>262</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -871,8 +870,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>950</xloc>
-      <yloc>100</yloc>
+      <xloc>957</xloc>
+      <yloc>262</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -934,8 +933,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>100</xloc>
-      <yloc>200</yloc>
+      <xloc>107</xloc>
+      <yloc>362</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -997,8 +996,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>100</xloc>
-      <yloc>250</yloc>
+      <xloc>107</xloc>
+      <yloc>412</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1060,8 +1059,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>400</xloc>
-      <yloc>200</yloc>
+      <xloc>407</xloc>
+      <yloc>362</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1123,8 +1122,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>400</xloc>
-      <yloc>250</yloc>
+      <xloc>407</xloc>
+      <yloc>412</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1186,8 +1185,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>100</xloc>
-      <yloc>300</yloc>
+      <xloc>107</xloc>
+      <yloc>462</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1249,8 +1248,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>100</xloc>
-      <yloc>350</yloc>
+      <xloc>107</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1312,8 +1311,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>950</xloc>
-      <yloc>200</yloc>
+      <xloc>957</xloc>
+      <yloc>362</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1375,8 +1374,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>950</xloc>
-      <yloc>250</yloc>
+      <xloc>957</xloc>
+      <yloc>412</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1438,8 +1437,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>950</xloc>
-      <yloc>300</yloc>
+      <xloc>957</xloc>
+      <yloc>462</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1501,8 +1500,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>100</xloc>
-      <yloc>400</yloc>
+      <xloc>107</xloc>
+      <yloc>562</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1564,8 +1563,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>100</xloc>
-      <yloc>450</yloc>
+      <xloc>107</xloc>
+      <yloc>612</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1627,8 +1626,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>700</xloc>
-      <yloc>200</yloc>
+      <xloc>707</xloc>
+      <yloc>362</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1690,8 +1689,8 @@ putRow(newRow);
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>700</xloc>
-      <yloc>250</yloc>
+      <xloc>707</xloc>
+      <yloc>412</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1733,8 +1732,8 @@ ORDER BY 1, 2, 3, 4
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>100</xloc>
-      <yloc>50</yloc>
+      <xloc>107</xloc>
+      <yloc>212</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1764,18 +1763,19 @@ AND request_type = &apos;Download&apos;
 AND request_result = &apos;Success&apos;
 AND download_type = &apos;manual&apos;
 AND p.formatted_name = &apos;firefox&apos;
+AND (? = 1) -- hack for blocking this step
 GROUP BY 1, 2, 3
 ORDER BY 1, 2, 3
 </sql>
     <limit>0</limit>
-    <lookup/>
+    <lookup>wait for: end 1</lookup>
     <execute_each_row>Y</execute_each_row>
     <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>400</xloc>
-      <yloc>50</yloc>
+      <xloc>407</xloc>
+      <yloc>212</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1799,18 +1799,19 @@ ORDER BY 1, 2, 3
 , SUM(tot_request_on_date) AS &apos;count&apos;
 FROM ffos_dimensional_by_date
 WHERE TO_DATE(date,&apos;YYYY-MM-DD&apos;) &gt;= CURRENT_DATE - ${DAYS_BACK}
+AND (? = 1) -- hack for blocking this step
 GROUP BY 1, 2, 3, 4
 ORDER BY 1, 2, 3, 4
 </sql>
     <limit>0</limit>
-    <lookup/>
+    <lookup>wait for: end 3</lookup>
     <execute_each_row>Y</execute_each_row>
     <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>950</xloc>
-      <yloc>50</yloc>
+      <xloc>957</xloc>
+      <yloc>212</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1836,25 +1837,58 @@ JOIN dates d ON d.date_id = b.date_id
 JOIN d_firefox_country l ON l.country_id = b.country_id
 WHERE b.date_id &gt;= DATEDIFF(&apos;d&apos;, TO_DATE(&apos;1999-12-31&apos;,&apos;YYYY-MM-DD&apos;), CURRENT_DATE - ${DAYS_BACK})
 AND mobileproduct_id = 1
+AND (? = 1) -- hack for blocking this step
 GROUP BY 1, 2, 3
 ORDER BY 1, 2, 3
 </sql>
     <limit>0</limit>
-    <lookup/>
+    <lookup>wait for: end 2</lookup>
     <execute_each_row>Y</execute_each_row>
     <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>700</xloc>
-      <yloc>50</yloc>
+      <xloc>707</xloc>
+      <yloc>212</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>block1</name>
-    <type>BlockingStep</type>
+    <name>Generate 1 Row</name>
+    <type>RowGenerator</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>one</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <limit>1</limit>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>561</xloc>
+      <yloc>15</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>wait for: end 3</name>
+    <type>BlockUntilStepsFinish</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -1862,22 +1896,23 @@ ORDER BY 1, 2, 3
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <pass_all_rows>N</pass_all_rows>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>block</prefix>
-      <cache_size>5000</cache_size>
-      <compress>Y</compress>
+    <steps>
+      <step>
+        <name>end 3</name>
+        <CopyNr>0</CopyNr>
+        </step>
+      </steps>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>251</xloc>
-      <yloc>240</yloc>
+      <xloc>957</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>block2</name>
-    <type>BlockingStep</type>
+    <name>wait for: end 2</name>
+    <type>BlockUntilStepsFinish</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -1885,22 +1920,23 @@ ORDER BY 1, 2, 3
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <pass_all_rows>N</pass_all_rows>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>block</prefix>
-      <cache_size>5000</cache_size>
-      <compress>Y</compress>
+    <steps>
+      <step>
+        <name>end 2</name>
+        <CopyNr>0</CopyNr>
+        </step>
+      </steps>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>547</xloc>
-      <yloc>155</yloc>
+      <xloc>707</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>block3</name>
-    <type>BlockingStep</type>
+    <name>wait for: end 1</name>
+    <type>BlockUntilStepsFinish</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -1908,15 +1944,88 @@ ORDER BY 1, 2, 3
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <pass_all_rows>N</pass_all_rows>
-      <directory>%%java.io.tmpdir%%</directory>
-      <prefix>block</prefix>
-      <cache_size>5000</cache_size>
-      <compress>Y</compress>
+    <steps>
+      <step>
+        <name>end 1</name>
+        <CopyNr>0</CopyNr>
+        </step>
+      </steps>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>829</xloc>
-      <yloc>137</yloc>
+      <xloc>407</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>end 1</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>105</xloc>
+      <yloc>685</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>end 2</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>407</xloc>
+      <yloc>529</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>end 3</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>707</xloc>
+      <yloc>529</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>end 4</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>957</xloc>
+      <yloc>529</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
